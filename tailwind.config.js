@@ -7,7 +7,8 @@ module.exports = {
                 blue: '#345FF6',
                 gunmetal: '#253347',
                 'dark-electric-blue': '#5E6E85',
-                skyblue: '#D6E6FE',
+                skyblue: 'rgba(214, 230, 254, 0.75)',
+                'skyblue-soft': 'rgba(214, 230, 254, 0.3)',
                 'blue-shadow': '#8FAECF',
             },
             fontFamily: {

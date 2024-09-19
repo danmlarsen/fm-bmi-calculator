@@ -8,49 +8,105 @@
         <link rel="stylesheet" href="src/sass/main.scss" />
     </head>
     <body class="text-dark-electric-blue">
-        <header class="h-[640px] bg-gradient-to-tl from-skyblue to-transparent rounded-b-3xl">
-            <div class="container mx-auto mb-12 px-6 pt-8 space-y-6">
-                <div class="flex flex-col items-center">
-                    <img class="size-10" src="/images/logo.svg" alt="Logo" />
+        <header>
+            <div class="min-h-[650px] bg-gradient-to-tl from-skyblue to-transparent rounded-b-3xl">
+                <div class="container mx-auto mb-12 px-6 pt-8 space-y-6">
+                    <div class="flex flex-col items-center">
+                        <img class="size-10" src="/images/logo.svg" alt="Logo" />
+                    </div>
+                    <div class="flex flex-col gap-6 items-center text-center">
+                        <h1 class="text-5xl font-semibold text-center text-gunmetal">Body Mass Index Calculator</h1>
+                        <p class="max-w-3xl">
+                            Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a
+                            valuable starting point to evaluate your overall health and well-being.
+                        </p>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-6 items-center text-center">
-                    <h1 class="text-5xl font-semibold text-center text-gunmetal">Body Mass Index Calculator</h1>
-                    <p class="max-w-3xl">
-                        Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a
-                        valuable starting point to evaluate your overall health and well-being.
-                    </p>
+            </div>
+
+            <div class="-mt-48 md:-mt-80 mx-6 p-6 max-w-2xl md:mx-auto space-y-6 bg-white rounded-xl shadow-2xl shadow-blue-shadow">
+                <form class="space-y-4 flex flex-col text-gunmetal" action="#" method="post" id="bmi_form">
+                    <h3 class="text-2xl font-semibold tracking-tighter">Enter your details below</h3>
+                    <fieldset class="flex text-xl font-semibold">
+                        <div class="grow space-x-4 flex items-center">
+                            <input class="accent-blue size-8" type="radio" name="units" id="units_metric" value="metric" checked />
+                            <label for="units_metric">Metric</label>
+                        </div>
+                        <div class="grow space-x-4 flex items-center">
+                            <input class="accent-blue size-8" type="radio" name="units" id="units_imperial" value="imperial" />
+                            <label for="units_imperial">Imperial</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="flex flex-col gap-4 md:flex-row" id="units_container">
+                        <div class="space-y-2">
+                            <label for="height_primary">Height</label>
+                            <div class="flex gap-4">
+                                <div class="space-y-2 grow">
+                                    <div class="relative">
+                                        <input
+                                            class="block w-full px-6 py-5 border border-dark-electric-blue rounded-lg text-2xl font-semibold"
+                                            type="number"
+                                            name="height"
+                                            placeholder="0"
+                                            id="height_primary"
+                                        />
+                                        <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">cm</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 grow hidden" id="height_secondary_container">
+                                    <div class="relative">
+                                        <input
+                                            class="block w-full px-6 py-5 border border-dark-electric-blue rounded-lg text-2xl font-semibold"
+                                            type="number"
+                                            name="height"
+                                            placeholder="0"
+                                            id="height_secondary"
+                                        />
+                                        <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">in</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="weight_primary">Weight</label>
+                            <div class="flex gap-4">
+                                <div class="space-y-2 grow">
+                                    <div class="relative">
+                                        <input
+                                            class="block w-full px-6 py-5 border border-dark-electric-blue rounded-lg text-2xl font-semibold"
+                                            type="number"
+                                            name="height"
+                                            placeholder="0"
+                                            id="weight_primary"
+                                        />
+                                        <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">kg</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 grow hidden" id="weight_secondary_container">
+                                    <div class="relative">
+                                        <input
+                                            class="block w-full px-6 py-5 border border-dark-electric-blue rounded-lg text-2xl font-semibold"
+                                            type="number"
+                                            name="height"
+                                            placeholder="0"
+                                            id="weight_secondary"
+                                        />
+                                        <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">lbs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="p-8 bg-blue rounded-xl text-white md:rounded-r-[100px]" id="bmi_container">
+                    <h2 class="mb-4 text-4xl font-semibold">Welcome</h2>
+                    <p>Enter your height and weight and you'll see your BMI result here</p>
                 </div>
             </div>
         </header>
-
-        <div class="mx-6 p-6 max-w-2xl -mt-48 md:-mt-72 space-y-6 bg-white rounded-xl">
-            <form action="#" method="post">
-                <h3>Enter your details below</h3>
-                <fieldset>
-                    <div>
-                        <input type="radio" name="units" id="units_metric" value="metric" />
-                        <label for="units_metric">Metric</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="units" id="units_imperial" value="imperial" />
-                        <label for="units_imperial">Imperial</label>
-                    </div>
-                </fieldset>
-                <div>
-                    <label for="height">Height</label>
-                    <input type="text" name="height" id="height" />
-                </div>
-                <div>
-                    <label for="weight">Weight</label>
-                    <input type="text" name="weight" id="weight" />
-                </div>
-            </form>
-
-            <div class="p-8 bg-blue rounded-xl text-white">
-                <h2 class="text-4xl">23.4</h2>
-                <p>Your BMI suggests you’re a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs.</p>
-            </div>
-        </div>
 
         <section class="mt-16">
             <div class="max-w-6xl mx-auto flex flex-col gap-12 md:-ml-20 md:flex-row md:items-center lg:ml-auto">
@@ -68,7 +124,7 @@
             </div>
         </section>
 
-        <section class="mt-16 bg-gradient-to-br from-transparent to-skyblue">
+        <section class="mx-auto max-w-[1392px] mt-16 bg-gradient-to-r from-transparent to-skyblue-soft rounded-3xl">
             <div class="container max-w-6xl mx-auto py-14 px-6">
                 <div class="flex flex-col gap-10 lg:flex-row">
                     <div class="flex flex-col gap-8 md:flex-row lg:flex-col">
@@ -157,5 +213,7 @@
                 </div>
             </div>
         </section>
+
+        <script type="module" src="src/ts/index.ts"></script>
     </body>
 </html>
