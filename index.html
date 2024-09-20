@@ -8,14 +8,14 @@
         <link rel="stylesheet" href="src/sass/main.scss" />
     </head>
     <body class="text-dark-electric-blue">
-        <header>
-            <div class="min-h-[650px] bg-gradient-to-tl from-skyblue to-transparent rounded-b-3xl">
-                <div class="container mx-auto mb-12 px-6 pt-8 space-y-6">
-                    <div class="flex flex-col items-center">
-                        <img class="size-10" src="/images/logo.svg" alt="Logo" />
+        <header class="grid grid-cols-12">
+            <div class="col-span-full row-start-1 row-end-8 lg:row-end-12 lg:col-start-1 lg:col-end-10 h-[640px] lg:h-[737px] bg-gradient-to-tl from-skyblue to-transparent rounded-b-3xl">
+                <div class="container mx-auto mb-12 px-6 pt-8 space-y-6 lg:w-1/2 lg:mx-0 text-center lg:text-left">
+                    <div class="flex flex-col items-center lg:items-start">
+                        <img class="size-10 lg:size-14" src="/images/logo.svg" alt="Logo" />
                     </div>
-                    <div class="flex flex-col gap-6 items-center text-center">
-                        <h1 class="text-5xl font-semibold text-center text-gunmetal">Body Mass Index Calculator</h1>
+                    <div class="flex flex-col gap-6 items-center">
+                        <h1 class="text-5xl font-semibold text-gunmetal lg:text-6xl">Body Mass Index Calculator</h1>
                         <p class="max-w-3xl">
                             Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a
                             valuable starting point to evaluate your overall health and well-being.
@@ -24,7 +24,9 @@
                 </div>
             </div>
 
-            <div class="-mt-48 md:-mt-80 mx-6 p-6 max-w-2xl md:mx-auto space-y-6 bg-white rounded-xl shadow-2xl shadow-blue-shadow">
+            <div
+                class="col-span-full row-start-6 row-end-12 md:row-start-4 lg:row-start-5 lg:row-end-10 lg:col-start-7 lg:col-end-12 mx-6 p-6 max-w-2xl md:mx-auto space-y-6 bg-white rounded-xl shadow-2xl shadow-blue-shadow"
+            >
                 <form class="space-y-4 flex flex-col text-gunmetal" action="#" method="post" id="bmi_form">
                     <h3 class="text-2xl font-semibold tracking-tighter">Enter your details below</h3>
                     <fieldset class="flex text-xl font-semibold">
@@ -113,7 +115,8 @@
                 <div>
                     <img src="/images/image-man-eating.webp" alt="Image of man eating" />
                 </div>
-                <div class="container mx-auto px-6 space-y-8">
+                <div class="container mx-auto px-6 flex flex-col items-start gap-8">
+                    <img class="hidden self-end -mt-20 lg:block" src="/images/pattern-curved-line-left.svg" alt="" />
                     <h2 class="text-3xl font-semibold text-gunmetal md:text-4xl">What your BMI result means</h2>
                     <p>
                         A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and
@@ -167,6 +170,10 @@
                             Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in
                             certain cases, the measurement may not be beneficial to use.
                         </p>
+                    </div>
+
+                    <div class="hidden lg:block lg:col-start-2 lg:col-span-2 lg:row-start-2">
+                        <img src="/images/pattern-curved-line-right.svg" alt="" />
                     </div>
 
                     <!-- Cards -->

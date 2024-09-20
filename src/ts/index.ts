@@ -1,4 +1,11 @@
-import { log } from 'console';
+const KG_PER_POUND = 0.45359237;
+const KG_PER_STONE = 6.35029318;
+const CM_PER_INCH = 2.54;
+const CM_PER_FOOT = 30.48;
+const STONES_PER_KG = 0.157473044;
+const POUNDS_PER_STONE = 14;
+const FEET_PER_CM = 0.032808399;
+const INCH_PER_FEET = 12;
 
 const formElement = document.getElementById('bmi_form')!;
 const radioUnitsMetric = document.getElementById('units_metric')!;
@@ -17,23 +24,44 @@ const bmiContainerElement = document.getElementById('bmi_container')!;
 
 const calcBmi = (weight: number, height: number): number => Number((Math.round((weight / (height / 100) ** 2) * 10) / 10).toFixed(1));
 
-const calcFeetToCm = (lengthInFeet: number): number => lengthInFeet * 30.48;
-const calcInchToCm = (lengthInInch: number): number => lengthInInch * 2.54;
-const calcStonesToKg = (weightInStones: number): number => weightInStones * 6.35029318;
-const calcPoundsToKg = (weightInPounds: number): number => weightInPounds * 0.45359237;
-const calcKgToImperial = (weightInKg: number): string => {
-    const totalWeight = weightInKg * 0.157473044;
-    const weightInStones = Math.trunc(totalWeight);
-    const weightInPounds = Math.floor((totalWeight - weightInStones) * 14);
+const calcFeetToCm = (lengthInFeet: number): number => lengthInFeet * CM_PER_FOOT;
+const calcInchToCm = (lengthInInch: number): number => lengthInInch * CM_PER_INCH;
+const calcStonesToKg = (weightInStones: number): number => weightInStones * KG_PER_STONE;
+const calcPoundsToKg = (weightInPounds: number): number => weightInPounds * KG_PER_POUND;
 
-    return `${weightInStones}st ${weightInPounds}lbs`;
+const calcCmToImperial = (lengthInCm: number): { feet: number; inches: number } => {
+    const totalLengthFeet = lengthInCm * FEET_PER_CM;
+    const lengthInFeet = Math.trunc(totalLengthFeet);
+    const lengthInInches = Math.floor((totalLengthFeet - lengthInFeet) * INCH_PER_FEET);
+
+    return {
+        feet: lengthInFeet,
+        inches: lengthInInches,
+    };
 };
+
+const calcKgToImperial = (weightInKg: number): { stones: number; pounds: number } => {
+    const totalWeightStones = weightInKg * STONES_PER_KG;
+    const weightInStones = Math.trunc(totalWeightStones);
+    const weightInPounds = Math.floor((totalWeightStones - weightInStones) * POUNDS_PER_STONE);
+
+    return {
+        stones: weightInStones,
+        pounds: weightInPounds,
+    };
+};
+
+const getImperialString = ({ stones, pounds }: { stones: number; pounds: number }): string => `${stones}st ${pounds}lbs`;
 
 let selectedUnit = 'metric';
 
 const useMetric = function (): void {
     inputHeightSecondaryContainerElement.classList.add('hidden');
     inputWeightSecondaryContainerElement.classList.add('hidden');
+
+    inputWeightPrimaryElement.value = Math.round(calcStonesToKg(+inputWeightPrimaryElement.value) + calcPoundsToKg(+inputWeightSecondaryElement.value)).toString();
+
+    inputHeightPrimaryElement.value = Math.ceil(calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value)).toString();
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'cm';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'kg';
@@ -44,6 +72,14 @@ const useMetric = function (): void {
 const useImperial = function (): void {
     inputHeightSecondaryContainerElement.classList.remove('hidden');
     inputWeightSecondaryContainerElement.classList.remove('hidden');
+
+    const { stones, pounds } = calcKgToImperial(+inputWeightPrimaryElement.value);
+    inputWeightPrimaryElement.value = stones.toString();
+    inputWeightSecondaryElement.value = pounds.toString();
+
+    const { feet, inches } = calcCmToImperial(+inputHeightPrimaryElement.value);
+    inputHeightPrimaryElement.value = feet.toString();
+    inputHeightSecondaryElement.value = inches.toString();
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'ft';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'st';
@@ -75,7 +111,7 @@ const getHealthyRange = function (heightInCm: number): string {
     const idealHigher = (Math.round(24.9 * heightMetersSq * 10) / 10).toFixed(1);
 
     if (selectedUnit === 'imperial') {
-        return `${calcKgToImperial(+idealLower)} - ${calcKgToImperial(+idealHigher)}`;
+        return `${getImperialString(calcKgToImperial(+idealLower))} - ${getImperialString(calcKgToImperial(+idealHigher))}`;
     }
 
     return `${idealLower}kgs - ${idealHigher}kgs`;
