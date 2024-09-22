@@ -14,6 +14,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
             },
+            spacing: {
+                default: '1160px',
+            },
         },
         screens: {
             sm: '480px',

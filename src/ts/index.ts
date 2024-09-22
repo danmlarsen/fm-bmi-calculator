@@ -120,7 +120,7 @@ const getHealthyRange = function (heightInCm: number): string {
 const renderBmi = function (bmi: number, classification: string, healthyRange: string): void {
     bmiContainerElement.innerHTML = `
         <p class="mb-2">Your BMI is...</p>
-        <h2 class="mb-6 text-4xl font-semibold">${bmi}</h2>
+        <h2 class="mb-6 text-4xl lg:text-6xl font-semibold">${bmi}</h2>
         <p>${classification} Your ideal weight is between <strong>${healthyRange}</strong>.</p>
     `;
 };
