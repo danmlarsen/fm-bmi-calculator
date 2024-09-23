@@ -22,6 +22,9 @@ const inputWeightSecondaryContainerElement = document.getElementById('weight_sec
 
 const bmiContainerElement = document.getElementById('bmi_container')!;
 
+let selectedUnit = 'metric';
+let bmi: number | null;
+
 const calcBmi = (weight: number, height: number): number => Number((Math.round((weight / (height / 100) ** 2) * 10) / 10).toFixed(1));
 
 const calcFeetToCm = (lengthInFeet: number): number => lengthInFeet * CM_PER_FOOT;
@@ -53,15 +56,17 @@ const calcKgToImperial = (weightInKg: number): { stones: number; pounds: number 
 
 const getImperialString = ({ stones, pounds }: { stones: number; pounds: number }): string => `${stones}st ${pounds}lbs`;
 
-let selectedUnit = 'metric';
-
 const useMetric = function (): void {
     inputHeightSecondaryContainerElement.classList.add('hidden');
     inputWeightSecondaryContainerElement.classList.add('hidden');
 
-    inputWeightPrimaryElement.value = Math.round(calcStonesToKg(+inputWeightPrimaryElement.value) + calcPoundsToKg(+inputWeightSecondaryElement.value)).toString();
+    if (inputWeightPrimaryElement.value) {
+        inputWeightPrimaryElement.value = Math.round(calcStonesToKg(+inputWeightPrimaryElement.value) + calcPoundsToKg(+inputWeightSecondaryElement.value)).toString();
+    }
 
-    inputHeightPrimaryElement.value = Math.ceil(calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value)).toString();
+    if (inputHeightPrimaryElement.value) {
+        inputHeightPrimaryElement.value = Math.ceil(calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value)).toString();
+    }
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'cm';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'kg';
@@ -73,13 +78,17 @@ const useImperial = function (): void {
     inputHeightSecondaryContainerElement.classList.remove('hidden');
     inputWeightSecondaryContainerElement.classList.remove('hidden');
 
-    const { stones, pounds } = calcKgToImperial(+inputWeightPrimaryElement.value);
-    inputWeightPrimaryElement.value = stones.toString();
-    inputWeightSecondaryElement.value = pounds.toString();
+    if (inputWeightPrimaryElement.value) {
+        const { stones, pounds } = calcKgToImperial(+inputWeightPrimaryElement.value);
+        inputWeightPrimaryElement.value = stones.toString();
+        inputWeightSecondaryElement.value = pounds.toString();
+    }
 
-    const { feet, inches } = calcCmToImperial(+inputHeightPrimaryElement.value);
-    inputHeightPrimaryElement.value = feet.toString();
-    inputHeightSecondaryElement.value = inches.toString();
+    if (inputHeightPrimaryElement.value) {
+        const { feet, inches } = calcCmToImperial(+inputHeightPrimaryElement.value);
+        inputHeightPrimaryElement.value = feet.toString();
+        inputHeightSecondaryElement.value = inches.toString();
+    }
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'ft';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'st';
@@ -119,9 +128,13 @@ const getHealthyRange = function (heightInCm: number): string {
 
 const renderBmi = function (bmi: number, classification: string, healthyRange: string): void {
     bmiContainerElement.innerHTML = `
-        <p class="mb-2">Your BMI is...</p>
-        <h2 class="mb-6 text-4xl lg:text-6xl font-semibold">${bmi}</h2>
-        <p>${classification} Your ideal weight is between <strong>${healthyRange}</strong>.</p>
+        <div class="flex flex-col md:flex-row gap-6 md:items-center">
+            <div class="md:w-1/2">
+                <p class="mb-2">Your BMI is...</p>
+                <h2 class="text-5xl lg:text-6xl font-semibold">${bmi}</h2>
+            </div>
+            <p class="md:w-1/2">${classification} Your ideal weight is between <strong>${healthyRange}</strong>.</p>
+        </div>
     `;
 };
 
@@ -151,9 +164,11 @@ const onInputChanged = function (e: Event): void {
 
     if (totalHeight <= 0 || totalWeight <= 0) return;
 
-    const bmi = calcBmi(totalWeight, totalHeight);
+    const newBmi = calcBmi(totalWeight, totalHeight);
 
-    if (bmi <= 0 || bmi >= 100) return;
+    if (newBmi <= 0 || newBmi >= 100) return;
+
+    bmi = newBmi;
 
     const classification = getClassification(bmi);
     const healthyRange = getHealthyRange(totalHeight);
