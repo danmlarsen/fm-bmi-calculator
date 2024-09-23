@@ -5,7 +5,10 @@
     "main": "index.js",
     "scripts": {
         "dev": "vite --host",
-        "build": "vite build",
+        "preview": "vite preview --port 8080 --base=/fm-bmi-calculator/",
+        "build": "vite build --base=/fm-bmi-calculator/",
+        "cleanup": "shx rm -rf dist",
+        "push": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose",
         "start": "npm run dev"
     },
     "keywords": [],
@@ -14,7 +17,9 @@
     "devDependencies": {
         "autoprefixer": "^10.4.20",
         "postcss": "^8.4.47",
+        "push-dir": "^0.4.1",
         "sass-embedded": "^1.78.0",
+        "shx": "^0.3.4",
         "tailwindcss": "^3.4.11",
         "vite": "^5.4.6"
     }
