@@ -6,3 +6,21 @@
     font-family: 'Inter';
     src: url('/fonts/Inter-VariableFont_slnt\,wght.ttf');
 }
+
+@layer components {
+    .heading-primary {
+        @apply text-5xl font-semibold text-gunmetal lg:text-[64px] leading-extra-tight tracking-tighter;
+    }
+
+    .heading-secondary {
+        @apply text-3xl font-semibold text-gunmetal lg:text-5xl leading-extra-tight tracking-tighter;
+    }
+
+    .heading-tertiary {
+        @apply text-2xl font-semibold text-gunmetal leading-extra-tight tracking-tighter;
+    }
+
+    .card {
+        @apply max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow;
+    }
+}

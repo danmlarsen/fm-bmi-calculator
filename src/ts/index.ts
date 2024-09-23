@@ -10,28 +10,22 @@ const INCH_PER_FEET = 12;
 const formElement = document.getElementById('bmi_form')!;
 const radioUnitsMetric = document.getElementById('units_metric')!;
 const radioUnitsImperial = document.getElementById('units_imperial')!;
-
 const unitsContainerElement = document.getElementById('units_container')!;
 const inputHeightPrimaryElement = document.getElementById('height_primary')! as HTMLInputElement;
 const inputHeightSecondaryElement = document.getElementById('height_secondary')! as HTMLInputElement;
 const inputWeightPrimaryElement = document.getElementById('weight_primary')! as HTMLInputElement;
 const inputWeightSecondaryElement = document.getElementById('weight_secondary')! as HTMLInputElement;
-
 const inputHeightSecondaryContainerElement = document.getElementById('height_secondary_container')!;
 const inputWeightSecondaryContainerElement = document.getElementById('weight_secondary_container')!;
-
 const bmiContainerElement = document.getElementById('bmi_container')!;
 
 let selectedUnit = 'metric';
-let bmi: number | null;
 
 const calcBmi = (weight: number, height: number): number => Number((Math.round((weight / (height / 100) ** 2) * 10) / 10).toFixed(1));
-
 const calcFeetToCm = (lengthInFeet: number): number => lengthInFeet * CM_PER_FOOT;
 const calcInchToCm = (lengthInInch: number): number => lengthInInch * CM_PER_INCH;
 const calcStonesToKg = (weightInStones: number): number => weightInStones * KG_PER_STONE;
 const calcPoundsToKg = (weightInPounds: number): number => weightInPounds * KG_PER_POUND;
-
 const calcCmToImperial = (lengthInCm: number): { feet: number; inches: number } => {
     const totalLengthFeet = lengthInCm * FEET_PER_CM;
     const lengthInFeet = Math.trunc(totalLengthFeet);
@@ -42,7 +36,6 @@ const calcCmToImperial = (lengthInCm: number): { feet: number; inches: number } 
         inches: lengthInInches,
     };
 };
-
 const calcKgToImperial = (weightInKg: number): { stones: number; pounds: number } => {
     const totalWeightStones = weightInKg * STONES_PER_KG;
     const weightInStones = Math.trunc(totalWeightStones);
@@ -53,7 +46,6 @@ const calcKgToImperial = (weightInKg: number): { stones: number; pounds: number 
         pounds: weightInPounds,
     };
 };
-
 const getImperialString = ({ stones, pounds }: { stones: number; pounds: number }): string => `${stones}st ${pounds}lbs`;
 
 const useMetric = function (): void {
@@ -67,6 +59,8 @@ const useMetric = function (): void {
     if (inputHeightPrimaryElement.value) {
         inputHeightPrimaryElement.value = Math.ceil(calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value)).toString();
     }
+
+    handleInputChanged();
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'cm';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'kg';
@@ -89,6 +83,8 @@ const useImperial = function (): void {
         inputHeightPrimaryElement.value = feet.toString();
         inputHeightSecondaryElement.value = inches.toString();
     }
+
+    handleInputChanged();
 
     inputHeightPrimaryElement.nextElementSibling!.textContent = 'ft';
     inputWeightPrimaryElement.nextElementSibling!.textContent = 'st';
@@ -138,6 +134,27 @@ const renderBmi = function (bmi: number, classification: string, healthyRange: s
     `;
 };
 
+const handleInputChanged = function (): void {
+    let totalHeight = +inputHeightPrimaryElement.value;
+    let totalWeight = +inputWeightPrimaryElement.value;
+
+    if (selectedUnit === 'imperial') {
+        totalHeight = calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value);
+        totalWeight = calcStonesToKg(+inputWeightPrimaryElement.value) + calcPoundsToKg(+inputWeightSecondaryElement.value);
+    }
+
+    if (totalHeight <= 0 || totalWeight <= 0) return;
+
+    const bmi = calcBmi(totalWeight, totalHeight);
+
+    if (bmi <= 0 || bmi >= 100) return;
+
+    const classification = getClassification(bmi);
+    const healthyRange = getHealthyRange(totalHeight);
+
+    renderBmi(bmi, classification, healthyRange);
+};
+
 const onUnitsChanged = function (e: Event): void {
     const targetElement = e.target as HTMLInputElement;
     if (!targetElement) return;
@@ -154,31 +171,11 @@ const onUnitsChanged = function (e: Event): void {
 };
 
 const onInputChanged = function (e: Event): void {
-    let totalHeight = +inputHeightPrimaryElement.value;
-    let totalWeight = +inputWeightPrimaryElement.value;
-
-    if (selectedUnit === 'imperial') {
-        totalHeight = calcFeetToCm(+inputHeightPrimaryElement.value) + calcInchToCm(+inputHeightSecondaryElement.value);
-        totalWeight = calcStonesToKg(+inputWeightPrimaryElement.value) + calcPoundsToKg(+inputWeightSecondaryElement.value);
-    }
-
-    if (totalHeight <= 0 || totalWeight <= 0) return;
-
-    const newBmi = calcBmi(totalWeight, totalHeight);
-
-    if (newBmi <= 0 || newBmi >= 100) return;
-
-    bmi = newBmi;
-
-    const classification = getClassification(bmi);
-    const healthyRange = getHealthyRange(totalHeight);
-
-    renderBmi(bmi, classification, healthyRange);
+    handleInputChanged();
 };
 
 radioUnitsMetric?.addEventListener('change', onUnitsChanged);
 radioUnitsImperial?.addEventListener('change', onUnitsChanged);
-
 inputHeightPrimaryElement.addEventListener('input', onInputChanged);
 inputHeightSecondaryElement.addEventListener('input', onInputChanged);
 inputWeightPrimaryElement.addEventListener('input', onInputChanged);

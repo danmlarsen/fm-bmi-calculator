@@ -17,7 +17,7 @@
                 <div
                     class="max-w-[42.875rem] lg:max-w-[29.0625rem] mx-6 md:mx-auto lg:mx-0 lg:mt-32 text-center lg:text-left flex flex-col gap-6 lg:gap-[2.1875rem] items-center lg:items-start lg:justify-self-start"
                 >
-                    <h1 class="text-5xl font-semibold text-gunmetal lg:text-[64px] leading-extra-tight tracking-tighter">
+                    <h1 class="heading-primary">
                         Body Mass<br />
                         Index Calculator
                     </h1>
@@ -31,7 +31,7 @@
                     class="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-[11.8rem] mt-12 mx-6 p-6 lg:p-8 max-w-[42.875rem] lg:max-w-[35.25rem] lg:mt-0 md:mx-auto space-y-6 lg:space-y-8 bg-white rounded-2xl shadow-3xl shadow-blue-shadow"
                 >
                     <form class="space-y-4 flex flex-col text-gunmetal lg:space-y-8" action="#" method="post" id="bmi_form">
-                        <h3 class="text-2xl font-semibold tracking-tighter leading-tight">Enter your details below</h3>
+                        <h3 class="heading-tertiary leading-tight">Enter your details below</h3>
                         <fieldset class="flex gap-6 font-semibold">
                             <div class="flex-1 space-x-[1.125rem] flex items-center">
                                 <input class="accent-blue size-[1.9375rem]" type="radio" name="units" id="units_metric" value="metric" checked />
@@ -115,13 +115,13 @@
         </header>
 
         <section class="mt-20 md:mt-24 lg:mt-16">
-            <div class="lg:max-w-inner mx-auto flex flex-col gap-12 lg:gap-[8.1875rem] md:-ml-20 md:flex-row md:items-center lg:ml-auto">
+            <div class="lg:max-w-inner mx-auto flex flex-col gap-12 lg:gap-[8.1875rem] md:-ml-20 md:flex-row md:items-center lg:ml-auto relative">
+                <img class="hidden absolute right-0 top-0 -translate-x-7 -translate-y-[3.25rem] lg:block" src="/images/pattern-curved-line-left.svg" alt="" />
                 <div class="container mx-auto">
                     <img class="lg:max-w-[564px]" src="/images/image-man-eating.webp" alt="Image of man eating" />
                 </div>
-                <div class="container mx-auto px-6 flex flex-col items-start gap-8 lg:px-0">
-                    <img class="hidden self-end -mt-20 lg:block" src="/images/pattern-curved-line-left.svg" alt="" />
-                    <h2 class="text-3xl font-semibold text-gunmetal lg:text-5xl leading-extra-tight tracking-tighter">What your BMI result means</h2>
+                <div class="container mx-auto px-6 flex flex-col items-start gap-[2.1875rem] lg:px-0 self-end mb-10">
+                    <h2 class="heading-secondary leading-extra-tight">What your BMI result means</h2>
                     <p>
                         A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and
                         type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity,
@@ -139,7 +139,7 @@
                             <img src="/images/icon-eating.svg" alt="Bowl with food icon" />
                         </div>
                         <div class="space-y-6">
-                            <h3 class="text-2xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Healthy eating</h3>
+                            <h3 class="heading-tertiary">Healthy eating</h3>
                             <p>Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</p>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             <img src="/images/icon-exercise.svg" alt="Dumbell icon" />
                         </div>
                         <div class="space-y-6">
-                            <h3 class="text-2xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Regular exercise</h3>
+                            <h3 class="heading-tertiary">Regular exercise</h3>
                             <p>Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</p>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                             <img src="/images/icon-sleep.svg" alt="Moon icon" />
                         </div>
                         <div class="space-y-6">
-                            <h3 class="text-2xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Adequate sleep</h3>
+                            <h3 class="heading-tertiary">Adequate sleep</h3>
                             <p>Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</p>
                         </div>
                     </div>
@@ -165,56 +165,56 @@
             </div>
         </section>
 
-        <section class="my-20 md:mt-24 lg:mt-32">
+        <section class="my-20 md:mt-24 lg:mt-[7.6rem]">
             <div class="container lg:max-w-inner mx-auto px-6 lg:px-0">
                 <div class="grid gap-4 justify-items-center md:grid-cols-2 md:gap-y-6 lg:gap-x-8 lg:grid-cols-12">
                     <div class="mb-14 space-y-10 md:col-span-2 lg:col-span-6">
-                        <h2 class="text-3xl font-semibold text-center text-gunmetal lg:text-5xl lg:text-left leading-extra-tight tracking-tighter">Limitations of BMI</h2>
+                        <h2 class="heading-secondary text-center lg:text-left">Limitations of BMI</h2>
                         <p class="max-w-sm text-center lg:text-left md:max-w-3xl">
                             Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in
                             certain cases, the measurement may not be beneficial to use.
                         </p>
                     </div>
 
-                    <div class="hidden lg:block lg:col-start-2 lg:col-span-2 lg:row-start-2">
+                    <div class="hidden translate-x-7 -translate-y-3 lg:block lg:col-start-2 lg:col-span-2 lg:row-start-2">
                         <img src="/images/pattern-curved-line-right.svg" alt="" />
                     </div>
 
                     <!-- Cards -->
-                    <div class="max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow lg:col-span-4 lg:col-start-8">
+                    <div class="card lg:col-span-4 lg:col-start-8">
                         <div class="flex items-center gap-4">
                             <img src="/images/icon-gender.svg" alt="Gender icon" />
-                            <h4 class="text-xl font-semibold text-gunmetal">Gender</h4>
+                            <h4 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Gender</h4>
                         </div>
                         <p>The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI.</p>
                     </div>
-                    <div class="max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow lg:col-span-4 lg:col-start-5 lg:row-start-2">
+                    <div class="card lg:col-span-4 lg:col-start-5 lg:row-start-2">
                         <div class="flex items-center gap-4">
                             <img src="/images/icon-age.svg" alt="Birthday cake icon" />
-                            <h4 class="text-xl font-semibold text-gunmetal">Age</h4>
+                            <h4 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Age</h4>
                         </div>
                         <p>In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.</p>
                     </div>
-                    <div class="max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow lg:col-span-4 lg:col-start-9 lg:row-start-2">
+                    <div class="card lg:col-span-4 lg:col-start-9 lg:row-start-2">
                         <div class="flex items-center gap-4">
                             <img src="/images/icon-muscle.svg" alt="Flexing biceps icon" />
-                            <h4 class="text-xl font-semibold text-gunmetal">Muscle</h4>
+                            <h4 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Muscle</h4>
                         </div>
                         <p>BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.</p>
                     </div>
-                    <div class="max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow lg:col-span-4 lg:col-start-3 lg:row-start-3">
+                    <div class="card lg:col-span-4 lg:col-start-3 lg:row-start-3">
                         <div class="flex items-center gap-4">
                             <img src="/images/icon-pregnancy.svg" alt="Baby icon" />
-                            <h4 class="text-xl font-semibold text-gunmetal">Pregnancy</h4>
+                            <h4 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Pregnancy</h4>
                         </div>
                         <p>
                             Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child.
                         </p>
                     </div>
-                    <div class="max-w-sm p-6 md:p-8 space-y-4 bg-white rounded-2xl shadow-3xl shadow-blue-shadow md:col-span-2 lg:col-span-4 lg:row-start-3">
+                    <div class="card md:col-span-2 lg:col-span-4 lg:row-start-3">
                         <div class="flex items-center gap-4">
                             <img src="/images/icon-race.svg" alt="Generic human icon" />
-                            <h4 class="text-xl font-semibold text-gunmetal">Race</h4>
+                            <h4 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Race</h4>
                         </div>
                         <p>
                             Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or
