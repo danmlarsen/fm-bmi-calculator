@@ -34,25 +34,25 @@
                         <h2 class="heading-tertiary leading-tight">Enter your details below</h2>
                         <fieldset class="flex gap-6 font-semibold">
                             <div class="flex-1 space-x-[1.125rem] flex items-center">
-                                <input class="accent-blue size-[1.9375rem]" type="radio" name="units" id="units_metric" value="metric" checked />
-                                <label for="units_metric">Metric</label>
+                                <input class="accent-blue size-[1.9375rem] cursor-pointer" type="radio" name="units" id="units_metric" value="metric" aria-label="Use Metric units" checked />
+                                <label class="cursor-pointer" for="units_metric">Metric</label>
                             </div>
                             <div class="flex-1 space-x-[1.125rem] flex items-center">
-                                <input class="accent-blue size-[1.9375rem]" type="radio" name="units" id="units_imperial" value="imperial" />
-                                <label for="units_imperial">Imperial</label>
+                                <input class="accent-blue size-[1.9375rem] cursor-pointer" type="radio" name="units" id="units_imperial" value="imperial" aria-label="Use Imperial units" />
+                                <label class="cursor-pointer" for="units_imperial">Imperial</label>
                             </div>
                         </fieldset>
 
                         <div class="flex flex-col gap-4 md:gap-6 md:flex-row" id="units_container">
                             <div class="space-y-2">
-                                <label for="height_primary" class="text-sm">Height</label>
+                                <label for="height_primary" class="text-sm cursor-pointer">Height</label>
                                 <div class="flex gap-4 md:gap-6">
                                     <div class="space-y-2 flex-1">
                                         <div class="relative">
                                             <input
                                                 class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
                                                 type="number"
-                                                name="height"
+                                                name="height_primary"
                                                 placeholder="0"
                                                 id="height_primary"
                                             />
@@ -64,7 +64,7 @@
                                             <input
                                                 class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
                                                 type="number"
-                                                name="height"
+                                                name="height_secondary"
                                                 placeholder="0"
                                                 id="height_secondary"
                                             />
@@ -75,14 +75,14 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label for="weight_primary" class="text-sm">Weight</label>
+                                <label for="weight_primary" class="text-sm cursor-pointer">Weight</label>
                                 <div class="flex gap-4 md:gap-6">
                                     <div class="space-y-2 flex-1">
                                         <div class="relative">
                                             <input
                                                 class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
                                                 type="number"
-                                                name="height"
+                                                name="weight_primary"
                                                 placeholder="0"
                                                 id="weight_primary"
                                             />
@@ -94,7 +94,7 @@
                                             <input
                                                 class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
                                                 type="number"
-                                                name="height"
+                                                name="weight_secondary"
                                                 placeholder="0"
                                                 id="weight_secondary"
                                             />
