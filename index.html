@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/fm-bmi-calculator/images/favicon-32x32.png" type="image/x-icon" />
+        <title>Body Mass Index Calculator</title>
+      <script type="module" crossorigin src="/fm-bmi-calculator/assets/index-CkJri-_i.js"></script>
+      <link rel="stylesheet" crossorigin href="/fm-bmi-calculator/assets/index-O5jLPakz.css">
+    </head>
+    <body class="text-dark-electric-blue">
+        <header class="max-w-outer lg:mx-auto relative">
+            <div class="absolute top-0 left-0 w-full lg:max-w-[61.125rem] h-[40rem] lg:h-full bg-gradient-to-tl from-skyblue rounded-b-4xl"></div>
+            <div class="max-w-inner lg:min-h-[46.0625rem] mx-auto relative grid justify-center lg:block">
+                <div class="pt-8 lg:pt-[4.6875rem] mb-6 mx-6 lg:m-0 flex flex-col items-center lg:items-start">
+                    <img class="size-10 lg:size-16" src="/fm-bmi-calculator/images/logo.svg" alt="Logo" />
+                </div>
+                <div
+                    class="max-w-[42.875rem] lg:max-w-[29.0625rem] mx-6 md:mx-auto lg:mx-0 lg:mt-32 text-center lg:text-left flex flex-col gap-6 lg:gap-[2.1875rem] items-center lg:items-start lg:justify-self-start"
+                >
+                    <h1 class="heading-primary">
+                        Body Mass<br />
+                        Index Calculator
+                    </h1>
+                    <p>
+                        Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a
+                        valuable starting point to evaluate your overall health and well-being.
+                    </p>
+                </div>
+
+                <div
+                    class="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-[11.8rem] mt-12 mx-6 p-6 lg:p-8 max-w-[42.875rem] lg:max-w-[35.25rem] lg:mt-0 md:mx-auto space-y-6 lg:space-y-8 bg-white rounded-2xl shadow-3xl shadow-blue-shadow"
+                >
+                    <form class="space-y-4 flex flex-col text-gunmetal lg:space-y-8" action="#" method="post" id="bmi_form">
+                        <h2 class="heading-tertiary leading-tight">Enter your details below</h2>
+                        <fieldset class="flex gap-6 font-semibold">
+                            <div class="flex-1 space-x-[1.125rem] flex items-center">
+                                <input class="accent-blue size-[1.9375rem] cursor-pointer" type="radio" name="units" id="units_metric" value="metric" aria-label="Use Metric units" checked />
+                                <label class="cursor-pointer" for="units_metric">Metric</label>
+                            </div>
+                            <div class="flex-1 space-x-[1.125rem] flex items-center">
+                                <input class="accent-blue size-[1.9375rem] cursor-pointer" type="radio" name="units" id="units_imperial" value="imperial" aria-label="Use Imperial units" />
+                                <label class="cursor-pointer" for="units_imperial">Imperial</label>
+                            </div>
+                        </fieldset>
+
+                        <div class="flex flex-col gap-4 md:gap-6 md:flex-row" id="units_container">
+                            <div class="space-y-2">
+                                <label for="height_primary" class="text-sm cursor-pointer">Height</label>
+                                <div class="flex gap-4 md:gap-6">
+                                    <div class="space-y-2 flex-1">
+                                        <div class="relative">
+                                            <input
+                                                class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
+                                                type="number"
+                                                name="height_primary"
+                                                placeholder="0"
+                                                id="height_primary"
+                                            />
+                                            <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">cm</div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2 flex-1 hidden" id="height_secondary_container">
+                                        <div class="relative">
+                                            <input
+                                                class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
+                                                type="number"
+                                                name="height_secondary"
+                                                placeholder="0"
+                                                id="height_secondary"
+                                            />
+                                            <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">in</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="weight_primary" class="text-sm cursor-pointer">Weight</label>
+                                <div class="flex gap-4 md:gap-6">
+                                    <div class="space-y-2 flex-1">
+                                        <div class="relative">
+                                            <input
+                                                class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
+                                                type="number"
+                                                name="weight_primary"
+                                                placeholder="0"
+                                                id="weight_primary"
+                                            />
+                                            <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">kg</div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2 flex-1 hidden" id="weight_secondary_container">
+                                        <div class="relative">
+                                            <input
+                                                class="block w-full px-6 py-5 border border-dark-electric-blue rounded-xl text-2xl font-semibold leading-extra-tight"
+                                                type="number"
+                                                name="weight_secondary"
+                                                placeholder="0"
+                                                id="weight_secondary"
+                                            />
+                                            <div class="absolute top-1/2 right-6 -translate-y-1/2 text-2xl text-blue font-semibold">lbs</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="p-8 bg-blue rounded-xl text-white md:rounded-r-[100px]" id="bmi_container">
+                        <h2 class="mb-4 text-2xl font-semibold tracking-tighter">Welcome!</h2>
+                        <p class="text-sm">Enter your height and weight and you'll see your BMI result here</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-20 md:mt-24 lg:mt-16">
+                <div class="lg:max-w-inner mx-auto flex flex-col gap-12 lg:gap-[8.1875rem] md:-ml-20 md:flex-row md:items-center lg:ml-auto relative">
+                    <img class="hidden absolute right-0 top-0 -translate-x-7 -translate-y-[3.25rem] lg:block" src="/fm-bmi-calculator/images/pattern-curved-line-left.svg" alt="" />
+                    <div class="container mx-auto">
+                        <img class="lg:max-w-[564px]" src="/fm-bmi-calculator/images/image-man-eating.webp" alt="Image of man eating" />
+                    </div>
+                    <div class="container mx-auto px-6 flex flex-col items-start gap-[2.1875rem] lg:px-0 self-end mb-10">
+                        <h2 class="heading-secondary leading-extra-tight">What your BMI result means</h2>
+                        <p>
+                            A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity
+                            and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical
+                            activity, ideally about 30 minutes daily for five days a week.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mx-auto max-w-outer mt-16 md:mt-24 bg-gradient-to-r from-transparent to-skyblue-soft rounded-b-4xl">
+                <div class="container lg:max-w-inner mx-auto py-14 px-6 lg:px-0 lg:pt-[4.5rem] lg:pb-24">
+                    <div class="flex flex-col gap-10 lg:gap-8 lg:flex-row">
+                        <div class="flex flex-col flex-1 gap-8 lg:gap-[2.8125rem] md:flex-row lg:flex-col">
+                            <div class="md:self-center lg:self-auto">
+                                <img src="/fm-bmi-calculator/images/icon-eating.svg" alt="Bowl with food icon" />
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="heading-tertiary">Healthy eating</h3>
+                                <p>Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-8 lg:gap-[2.8125rem] md:flex-row lg:flex-col">
+                            <div class="md:self-center lg:self-auto">
+                                <img src="/fm-bmi-calculator/images/icon-exercise.svg" alt="Dumbell icon" />
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="heading-tertiary">Regular exercise</h3>
+                                <p>Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-8 lg:gap-[2.8125rem] md:flex-row lg:flex-col">
+                            <div class="md:self-center lg:self-auto">
+                                <img src="/fm-bmi-calculator/images/icon-sleep.svg" alt="Moon icon" />
+                            </div>
+                            <div class="space-y-6">
+                                <h3 class="heading-tertiary">Adequate sleep</h3>
+                                <p>Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-20 md:mt-24 lg:mt-[7.6rem]">
+                <div class="container lg:max-w-inner mx-auto px-6 lg:px-0">
+                    <div class="grid gap-4 justify-items-center md:grid-cols-2 md:gap-y-6 lg:gap-x-8 lg:grid-cols-12">
+                        <div class="mb-14 space-y-10 md:col-span-2 lg:col-span-6">
+                            <h2 class="heading-secondary text-center lg:text-left">Limitations of BMI</h2>
+                            <p class="max-w-sm text-center lg:text-left md:max-w-3xl">
+                                Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in
+                                certain cases, the measurement may not be beneficial to use.
+                            </p>
+                        </div>
+
+                        <div class="hidden translate-x-7 -translate-y-3 lg:block lg:col-start-2 lg:col-span-2 lg:row-start-2">
+                            <img src="/fm-bmi-calculator/images/pattern-curved-line-right.svg" alt="" />
+                        </div>
+
+                        <!-- Cards -->
+                        <div class="card lg:col-span-4 lg:col-start-8">
+                            <div class="flex items-center gap-4">
+                                <img src="/fm-bmi-calculator/images/icon-gender.svg" alt="Gender icon" />
+                                <h3 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Gender</h3>
+                            </div>
+                            <p>The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI.</p>
+                        </div>
+                        <div class="card lg:col-span-4 lg:col-start-5 lg:row-start-2">
+                            <div class="flex items-center gap-4">
+                                <img src="/fm-bmi-calculator/images/icon-age.svg" alt="Birthday cake icon" />
+                                <h3 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Age</h3>
+                            </div>
+                            <p>In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.</p>
+                        </div>
+                        <div class="card lg:col-span-4 lg:col-start-9 lg:row-start-2">
+                            <div class="flex items-center gap-4">
+                                <img src="/fm-bmi-calculator/images/icon-muscle.svg" alt="Flexing biceps icon" />
+                                <h3 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Muscle</h3>
+                            </div>
+                            <p>BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.</p>
+                        </div>
+                        <div class="card lg:col-span-4 lg:col-start-3 lg:row-start-3">
+                            <div class="flex items-center gap-4">
+                                <img src="/fm-bmi-calculator/images/icon-pregnancy.svg" alt="Baby icon" />
+                                <h3 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Pregnancy</h3>
+                            </div>
+                            <p>
+                                Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and
+                                child.
+                            </p>
+                        </div>
+                        <div class="card md:col-span-2 lg:col-span-4 lg:row-start-3">
+                            <div class="flex items-center gap-4">
+                                <img src="/fm-bmi-calculator/images/icon-race.svg" alt="Generic human icon" />
+                                <h3 class="text-xl font-semibold text-gunmetal leading-extra-tight tracking-tighter">Race</h3>
+                            </div>
+                            <p>
+                                Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or
+                                practice nurse.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </body>
+</html>
